@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.score-board {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+#gameCanvas {
+    border: 2px solid #333;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#startButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#startButton:hover {
+    background-color: #45a049;
+}
+
+.mobile-controls {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.horizontal-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.mobile-controls button {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.mobile-controls button:active {
+    background-color: #bbb;
+}
+
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: flex;
+    }
+}
