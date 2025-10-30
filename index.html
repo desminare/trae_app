@@ -3,28 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>スネークゲーム</title>
+    <title>CISSP学習アプリ - 問題集モード</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="game-container">
-        <div class="score-board">
-            <span>スコア: </span>
-            <span id="score">0</span>
+    <div class="app-container">
+        <header>
+            <h1>CISSP学習アプリ</h1>
+            <p class="subtitle">8ドメインの問題集で試験対策</p>
+        </header>
+
+        <!-- ドメイン選択画面 -->
+        <div id="domainSelection" class="screen active">
+            <h2>ドメインを選択してください</h2>
+            <div class="domain-grid">
+                <button class="domain-btn" data-domain="セキュリティとリスクマネジメント">
+                    <span class="domain-number">1</span>
+                    <span class="domain-name">セキュリティとリスクマネジメント</span>
+                </button>
+                <button class="domain-btn" data-domain="資産のセキュリティ">
+                    <span class="domain-number">2</span>
+                    <span class="domain-name">資産のセキュリティ</span>
+                </button>
+                <button class="domain-btn" data-domain="セキュリティアーキテクチャとエンジニアリング">
+                    <span class="domain-number">3</span>
+                    <span class="domain-name">セキュリティアーキテクチャとエンジニアリング</span>
+                </button>
+                <button class="domain-btn" data-domain="通信とネットワークセキュリティ">
+                    <span class="domain-number">4</span>
+                    <span class="domain-name">通信とネットワークセキュリティ</span>
+                </button>
+                <button class="domain-btn" data-domain="アイデンティティとアクセス管理">
+                    <span class="domain-number">5</span>
+                    <span class="domain-name">アイデンティティとアクセス管理</span>
+                </button>
+                <button class="domain-btn" data-domain="セキュリティ評価とテスト">
+                    <span class="domain-number">6</span>
+                    <span class="domain-name">セキュリティ評価とテスト</span>
+                </button>
+                <button class="domain-btn" data-domain="セキュリティ運用">
+                    <span class="domain-number">7</span>
+                    <span class="domain-name">セキュリティ運用</span>
+                </button>
+                <button class="domain-btn" data-domain="ソフトウェア開発セキュリティ">
+                    <span class="domain-number">8</span>
+                    <span class="domain-name">ソフトウェア開発セキュリティ</span>
+                </button>
+            </div>
         </div>
-        <canvas id="gameCanvas"></canvas>
-        <div class="controls">
-            <button id="startButton">ゲーム開始</button>
-            <div class="mobile-controls">
-                <button id="upButton">↑</button>
-                <div class="horizontal-controls">
-                    <button id="leftButton">←</button>
-                    <button id="rightButton">→</button>
+
+        <!-- 問題画面 -->
+        <div id="questionScreen" class="screen">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="question-info">
+                <span id="currentDomain" class="current-domain"></span>
+                <span id="questionCounter" class="question-counter"></span>
+            </div>
+
+            <div class="question-container">
+                <h2 id="questionText" class="question-text"></h2>
+                <div id="optionsContainer" class="options-container"></div>
+            </div>
+
+            <div id="feedbackContainer" class="feedback-container hidden">
+                <div id="feedbackMessage" class="feedback-message"></div>
+                <div id="explanationText" class="explanation-text"></div>
+                <button id="nextButton" class="next-btn">次の問題へ</button>
+            </div>
+
+            <button id="backToDomains" class="back-btn">ドメイン選択に戻る</button>
+        </div>
+
+        <!-- 結果画面 -->
+        <div id="resultScreen" class="screen">
+            <h2>学習結果</h2>
+            <div class="result-container">
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span id="scorePercentage" class="score-percentage"></span>
+                    </div>
+                    <p id="scoreText" class="score-text"></p>
                 </div>
-                <button id="downButton">↓</button>
+                <div class="result-details">
+                    <p><strong>ドメイン:</strong> <span id="resultDomain"></span></p>
+                    <p><strong>正解数:</strong> <span id="correctCount"></span> / <span id="totalCount"></span></p>
+                    <p><strong>正答率:</strong> <span id="accuracyRate"></span>%</p>
+                </div>
+                <div class="result-actions">
+                    <button id="retryButton" class="action-btn primary">もう一度挑戦</button>
+                    <button id="backToDomainsFromResult" class="action-btn secondary">ドメイン選択に戻る</button>
+                </div>
             </div>
         </div>
     </div>
-    <script src="game.js"></script>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
